@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2025 at 08:59 PM
+-- Generation Time: Mar 31, 2025 at 09:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -55,7 +55,10 @@ CREATE TABLE `properties` (
 INSERT INTO `properties` (`id`, `name`, `type`, `address`, `createdAt`, `updatedAt`) VALUES
 (1, 'shopper plaza', 'Residential', 'Mikocheni', '2025-03-31 12:18:43', '2025-03-31 12:18:43'),
 (2, 'jmall1 block', 'Commercial', 'Mbezi beach', '2025-03-31 13:00:46', '2025-03-31 13:00:46'),
-(3, 'power house', 'Residential', 'Makumbusho', '2025-03-31 17:44:30', '2025-03-31 17:44:30');
+(3, 'power house', 'Residential', 'Makumbusho', '2025-03-31 17:44:30', '2025-03-31 17:44:30'),
+(4, 'mwenge complex', 'Commercial', 'Mwenge', '2025-03-31 19:25:12', '2025-03-31 19:25:12'),
+(5, 'nssf building', 'Commercial', 'Ubungo', '2025-03-31 19:25:55', '2025-03-31 19:25:55'),
+(6, 'nhc building', 'Residential', 'Kawe', '2025-03-31 19:26:24', '2025-03-31 19:26:24');
 
 -- --------------------------------------------------------
 
@@ -78,7 +81,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `createdAt`, `updatedAt`) VALUES
 (1, 'Deo Amasi', 'admin@gmail.com', '$2b$10$nzjhhFqfKUFvJsaxaCKEb./RUtfQqCBjOhgpJl3wCA15MVOyqnMcq', '2025-03-29 16:17:30', '2025-03-29 16:17:30'),
-(2, 'Oswald gerald', 'oswald@gmail.com', '$2b$10$0Dn1Ts5AjRIIKIXLS0WsqOCSJGT5YHTZOLzuaLsJWV0u0BU0xBUVG', '2025-03-30 19:14:22', '2025-03-30 19:14:22');
+(2, 'Oswald gerald', 'oswald@gmail.com', '$2b$10$0Dn1Ts5AjRIIKIXLS0WsqOCSJGT5YHTZOLzuaLsJWV0u0BU0xBUVG', '2025-03-30 19:14:22', '2025-03-30 19:14:22'),
+(3, 'Abubakar Ismail', 'abuuawesome@gmail.com', '$2b$10$PMuhMjIzuiLY6Wlq2qOEOuHUKX8RLdyNHu4ZyESfhKywjhmjrPJtC', '2025-03-31 19:06:52', '2025-03-31 19:06:52');
 
 -- --------------------------------------------------------
 
@@ -103,7 +107,18 @@ CREATE TABLE `utility_bills` (
 INSERT INTO `utility_bills` (`id`, `type`, `amount`, `date`, `property_id`, `createdAt`, `updatedAt`) VALUES
 (1, 'Gas', 3000, '2024-03-31 00:00:00', 1, '2025-03-31 13:32:31', '2025-03-31 13:32:31'),
 (2, 'electricity', 10000, '2025-03-31 00:00:00', 2, '2025-03-31 17:17:41', '2025-03-31 17:17:41'),
-(3, 'water', 7000, '2025-03-31 00:00:00', 2, '2025-03-31 17:18:05', '2025-03-31 17:18:05');
+(3, 'water', 7000, '2025-03-31 00:00:00', 2, '2025-03-31 17:18:05', '2025-03-31 17:18:05'),
+(4, 'electricity', 2000, '2025-03-30 00:00:00', 6, '2025-03-31 19:39:45', '2025-03-31 19:39:45'),
+(5, 'water', 5000, '2025-03-31 00:00:00', 6, '2025-03-31 19:40:02', '2025-03-31 19:40:02'),
+(6, 'gas', 10000, '2025-04-01 00:00:00', 6, '2025-03-31 19:40:22', '2025-03-31 19:40:22'),
+(7, 'electricity', 10000, '2025-04-01 00:00:00', 1, '2025-03-31 19:41:03', '2025-03-31 19:41:03'),
+(8, 'water', 1000, '2025-03-31 00:00:00', 1, '2025-03-31 19:41:27', '2025-03-31 19:41:27'),
+(9, 'electricity', 6000, '2025-04-01 00:00:00', 4, '2025-03-31 19:42:20', '2025-03-31 19:42:20'),
+(10, 'water', 4000, '2025-04-01 00:00:00', 4, '2025-03-31 19:42:36', '2025-03-31 19:42:36'),
+(11, 'gas', 3000, '2025-04-01 00:00:00', 4, '2025-03-31 19:43:07', '2025-03-31 19:43:07'),
+(12, 'electricity', 10000, '2025-04-01 00:00:00', 3, '2025-03-31 19:43:33', '2025-03-31 19:43:33'),
+(13, 'water', 20000, '2025-04-01 00:00:00', 3, '2025-03-31 19:43:55', '2025-03-31 19:43:55'),
+(14, 'gas', 30000, '2025-04-01 00:00:00', 3, '2025-03-31 19:44:17', '2025-03-31 19:44:17');
 
 --
 -- Indexes for dumped tables
@@ -148,19 +163,19 @@ ALTER TABLE `models`
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `utility_bills`
 --
 ALTER TABLE `utility_bills`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

@@ -1,12 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
+import Pagination from "./Pagination";
 
 const Properties = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [properties, setProperties] = useState([]);
   const [sortConfig, setSortConfig] = useState(null);
   const [filterType, setFilterType] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const propertiesPerPage = 5;
+
+  
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -58,6 +63,18 @@ const Properties = () => {
     return sortableProperties;
   }, [filteredProperties, sortConfig]);
 
+    const indexOfLastProperty = currentPage * propertiesPerPage;
+    const indexOfFirstProperty = indexOfLastProperty - propertiesPerPage;
+    const currentProperties = sortedProperties.slice(indexOfFirstProperty, indexOfLastProperty);
+
+    const totalPages = Math.ceil(properties.length / propertiesPerPage);
+
+    const handlePageChange = (pageNumber) => {
+      if (pageNumber >= 1 && pageNumber <= totalPages) {
+        setCurrentPage(pageNumber);
+      }
+    };
+
   return (
     <>
       {/* */}
@@ -84,7 +101,7 @@ const Properties = () => {
             <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
               <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                 <div className="overflow-hidden">
-                  <table className="min-w-full text-left text-sm font-light">
+                  <table className="min-w-full text-left text-sm font-light mb-4">
                     <thead className="border-b font-medium dark:border-neutral-500">
                       <tr>
                         <th scope="col" className="px-6 py-4">
@@ -111,14 +128,14 @@ const Properties = () => {
                             Loading...
                           </td>
                         </tr>
-                      ) : sortedProperties.length === 0 ? (
+                      ) : currentProperties.length === 0 ? (
                         <tr className="border-b dark:border-neutral-500">
                           <td className="whitespace-nowrap px-6 py-4 font-medium" colSpan="5">
                             No data found
                           </td>
                         </tr>
                       ) : (
-                        sortedProperties.map((property, index) => (
+                        currentProperties.map((property, index) => (
                           <tr key={index} className="border-b dark:border-neutral-500">
                             <td className="whitespace-nowrap px-6 py-4 font-medium">
                               {index + 1}
@@ -136,6 +153,11 @@ const Properties = () => {
                       )}
                     </tbody>
                   </table>
+                  <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    handlePageChange={handlePageChange}
+                  />
                 </div>
               </div>
             </div>
