@@ -46,6 +46,7 @@ Start the development server:
 npm run dev
 
 The backend will run at http://localhost:5000 as specified in the .env file.
+I have attached the db for easy setup in db folder
 
 2. Frontend
 
